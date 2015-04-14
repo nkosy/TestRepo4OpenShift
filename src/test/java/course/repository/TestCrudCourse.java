@@ -40,7 +40,7 @@ public class TestCrudCourse {
         Assert.assertEquals("National Diploma IT",course.getName());
     }
 
-//    @Test
+    @Test
     public void testUpdate() throws Exception {
 
         Course course = repository.findOne(id);
@@ -52,7 +52,7 @@ public class TestCrudCourse {
 
     }
 
-//    @Test
+    @Test
     public void testDelete() throws Exception {
         Course course = repository.findOne(id);
         repository.delete(course);
