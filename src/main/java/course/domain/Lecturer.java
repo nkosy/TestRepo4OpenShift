@@ -1,11 +1,14 @@
 package course.domain;
 
+import javax.persistence.Entity;
 import java.io.Serializable;
 
 /**
  * Created by hashcode on 2015/04/07.
  */
+@Entity
 public class Lecturer implements Serializable{
+
     private String firstName;
     private String lastName;
     private int age;

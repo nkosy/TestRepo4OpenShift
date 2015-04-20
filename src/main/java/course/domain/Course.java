@@ -16,6 +16,9 @@ public class Course implements Serializable{
     @Column(unique = true)
     private String code;
     private int offering;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="course_id")
+    private List<Subject> subjects;
 
     private Course() {
     }
@@ -25,6 +28,7 @@ public class Course implements Serializable{
         name=builder.name;
         code=builder.code;
         offering=builder.offering;
+        subjects = builder.subjects;
     }
 
     public Long getId() {
@@ -43,19 +47,30 @@ public class Course implements Serializable{
         return name;
     }
 
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
     public static class Builder{
 
         private String name;
         private String code;
         private int offering;
         private Long id;
+        private List<Subject> subjects;
 
         public Builder(String code) {
             this.code = code;
         }
 
+
         public Builder offering(int value){
             this.offering=value;
+            return this;
+        }
+
+        public Builder subjects(List<Subject> value){
+            this.subjects=value;
             return this;
         }
 
@@ -68,6 +83,16 @@ public class Course implements Serializable{
             this.name=value;
             return this;
         }
+        public Builder copy(Course value){
+            this.name=value.getName();
+            this.code=value.getCode();
+            this.offering=value.getOffering();
+            this.id=value.getId();
+            this.subjects=value.getSubjects();
+            return this;
+        }
+
+
 
         public Course build(){
             return new Course(this);
