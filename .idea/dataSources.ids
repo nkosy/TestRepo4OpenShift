@@ -15,5 +15,34 @@
       <primary-key name="PRIMARY" columns="id"/>
       <index name="UK_i60mruj0y7a7vs99dqpiye7en" unique="true" columns="code"/>
     </table>
+    <table name="department" schema="" catalog="course" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="postal_code" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="faculty_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_smd8hdb843ugc6vi6k7fl6qvb" columns="faculty_id" ref-table="faculty" ref-schema="" ref-catalog="course" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_7a7hpksua2wua4gt1v776omw7" table="lecturer" schema="" catalog="course" columns="dept_id"/>
+      <index name="FK_smd8hdb843ugc6vi6k7fl6qvb" unique="false" columns="faculty_id"/>
+    </table>
+    <table name="faculty" schema="" catalog="course" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="postal_code" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_smd8hdb843ugc6vi6k7fl6qvb" table="department" schema="" catalog="course" columns="faculty_id"/>
+    </table>
+    <table name="lecturer" schema="" catalog="course" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="age" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="first_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="dept_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_7a7hpksua2wua4gt1v776omw7" columns="dept_id" ref-table="department" ref-schema="" ref-catalog="course" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_7a7hpksua2wua4gt1v776omw7" unique="false" columns="dept_id"/>
+    </table>
   </data-source>
 </component>
