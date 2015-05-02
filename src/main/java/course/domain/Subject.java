@@ -13,7 +13,81 @@ import java.io.Serializable;
 public class Subject implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
     private String name;
     private String code;
+
+    public Subject(Builder builder) {
+        this.id=builder.id;
+        this.code=builder.code;
+        this.name=builder.name;
+    }
+
+    public static class Builder{
+        private Long id;
+        private String name;
+        private String code;
+
+        public Builder(String code) {
+            this.code = code;
+        }
+
+        public Builder id(Long value){
+            this.id=value;
+            return this;
+        }
+
+        public Builder name(String value){
+            this.name=value;
+            return this;
+        }
+
+        public Builder copy(Subject value){
+            this.id=value.id;
+            this.code=value.code;
+            this.name=value.name;
+            return this;
+        }
+
+        public Subject build(){
+            return new Subject(this);
+        }
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Subject subject = (Subject) o;
+
+        return id.equals(subject.id);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                '}';
+    }
 }
