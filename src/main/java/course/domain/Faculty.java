@@ -15,11 +15,27 @@ public class Faculty implements Serializable{
     private String name;
     @Embedded
     private ContactAddress address;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name="faculty_id")
     private List<Department> departments;
 
     private Faculty() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ContactAddress getAddress() {
+        return address;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
     }
 
     public Faculty(Builder builder) {
@@ -44,10 +60,6 @@ public class Faculty implements Serializable{
             return this;
         }
 
-        public Builder name(String value){
-            this.name=value;
-            return this;
-        }
 
         public Builder address(ContactAddress value){
             this.address=value;
@@ -71,5 +83,28 @@ public class Faculty implements Serializable{
             return new Faculty(this);
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Faculty faculty = (Faculty) o;
+
+        return id.equals(faculty.id);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Faculty{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

@@ -20,45 +20,33 @@ import java.util.List;
 @SpringApplicationConfiguration(classes= App.class)
 @WebAppConfiguration
 public class TestCrudCourse {
-    private Long id;
+
 
     @Autowired
     CourseRepository repository;
     @Test
     public void testCreate() throws Exception {
         List<Course> courses = new ArrayList<Course>();
-        Course course = new Course.Builder("311")
+        Course course = new Course.Builder("1111")
                 .name("National Diploma IT").offering(2015).build();
         repository.save(course);
-        id=course.getId();
         Assert.assertNotNull(course.getId());
-    }
 
-    @Test
-    public void testRead() throws Exception {
-        Course course = repository.findOne(id);
-        Assert.assertEquals("National Diploma IT",course.getName());
-    }
+        course = repository.findOne(course.getId());
+        Assert.assertEquals("National Diploma IT", course.getName());
 
-    @Test
-    public void testUpdate() throws Exception {
 
-        Course course = repository.findOne(id);
-        Course newcourse = new Course.Builder("12").id(course.getId())
-                .name("Diploma IT").offering(2014).build();
+        Course newcourse = new Course.Builder("81111").id(course.getId())
+                .name("National Diploma IT").offering(2014).build();
         repository.save(newcourse);
-        Assert.assertEquals("Diploma IT", course.getName());
-        Assert.assertEquals(2014, course.getOffering());
+        Assert.assertEquals("National Diploma IT", course.getName());
+        Assert.assertEquals(2015, course.getOffering());
 
-    }
-
-    @Test
-    public void testDelete() throws Exception {
-        Course course = repository.findOne(id);
+       course = repository.findOne(course.getId());
         repository.delete(course);
-        Course newcourse = repository.findOne(id);
+        newcourse = repository.findOne(course.getId());
         Assert.assertNull(newcourse);
-
-
     }
+
+
 }

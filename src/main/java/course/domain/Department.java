@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 public class Department  implements Serializable{
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     @Embedded

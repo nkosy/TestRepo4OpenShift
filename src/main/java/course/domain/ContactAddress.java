@@ -11,6 +11,9 @@ public class ContactAddress implements Serializable{
     private String email;
     private String postalCode;
 
+    private ContactAddress() {
+    }
+
     public ContactAddress(Builder builder) {
         email=builder.email;
         postalCode=builder.postalCode;
