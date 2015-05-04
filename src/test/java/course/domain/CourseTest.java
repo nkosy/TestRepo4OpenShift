@@ -31,7 +31,7 @@ public class CourseTest {
         Course course =CourseFactory
                 .createCourse(25, values, lecturers);
 
-        Assert.assertEquals("NDP2015",course.getCode());
+        Assert.assertEquals("NDP2017",course.getCode());
     }
 
     @Test

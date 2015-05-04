@@ -1,48 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
   <data-source name="MySQL - course@localhost" uuid="75dec98f-098d-4a2f-a4d4-376494b1c78a">
-    <database-info product="MySQL" version="5.5.41-0ubuntu0.14.10.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
-      <extra-name-characters>#@</extra-name-characters>
-      <identifier-quote-string>`</identifier-quote-string>
-    </database-info>
-    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
-    <schema name="" catalog="course"/>
-    <table name="course" schema="" catalog="course" type="TABLE">
-      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="code" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="offering" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <index name="UK_i60mruj0y7a7vs99dqpiye7en" unique="true" columns="code"/>
-    </table>
-    <table name="department" schema="" catalog="course" type="TABLE">
-      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="postal_code" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="faculty_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="FK_smd8hdb843ugc6vi6k7fl6qvb" columns="faculty_id" ref-table="faculty" ref-schema="" ref-catalog="course" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="FK_7a7hpksua2wua4gt1v776omw7" table="lecturer" schema="" catalog="course" columns="dept_id"/>
-      <index name="FK_smd8hdb843ugc6vi6k7fl6qvb" unique="false" columns="faculty_id"/>
-    </table>
-    <table name="faculty" schema="" catalog="course" type="TABLE">
-      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="postal_code" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="FK_smd8hdb843ugc6vi6k7fl6qvb" table="department" schema="" catalog="course" columns="faculty_id"/>
-    </table>
-    <table name="lecturer" schema="" catalog="course" type="TABLE">
-      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="age" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="first_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="last_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="dept_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="FK_7a7hpksua2wua4gt1v776omw7" columns="dept_id" ref-table="department" ref-schema="" ref-catalog="course" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="FK_7a7hpksua2wua4gt1v776omw7" unique="false" columns="dept_id"/>
-    </table>
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
 </component>

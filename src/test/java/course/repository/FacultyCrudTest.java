@@ -58,7 +58,7 @@ public class FacultyCrudTest extends AbstractTestNGSpringContextTests{
     public void read() throws Exception {
         Faculty faculty = repository.findOne(id);
         Assert.assertNotNull(faculty.getId());
-        Assert.assertEquals("7550", faculty.getAddress().getPostalCode());
+        Assert.assertEquals("7552", faculty.getAddress().getPostalCode());
         Assert.assertTrue(faculty.getDepartments().size() == 2);
 
     }
