@@ -16,7 +16,7 @@ public class Course implements Serializable{
     @Column(unique = true)
     private String code;
     private int offering;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name="course_id")
     private List<Subject> subjects;
 
