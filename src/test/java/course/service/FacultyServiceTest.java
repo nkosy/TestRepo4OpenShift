@@ -33,7 +33,6 @@ public class FacultyServiceTest extends AbstractTestNGSpringContextTests{
 
     @Autowired
     private FacultyRepository repository;
-
     private List<Department> departments;
     @BeforeMethod
     public void setUp() throws Exception {
