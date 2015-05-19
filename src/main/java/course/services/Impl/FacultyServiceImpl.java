@@ -29,6 +29,7 @@ public class FacultyServiceImpl implements FacultyService{
 
     @Override
     public List<Department> getDepatments(Long id) {
+
         return repository.findOne(id).getDepartments();
     }
 
