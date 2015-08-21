@@ -1,5 +1,6 @@
 package course.services;
 
+import course.domain.Department;
 import course.domain.Faculty;
 
 import java.util.List;
@@ -9,4 +10,5 @@ import java.util.List;
  */
 public interface FacultyService {
      List<Faculty> getAllFAculties();
+     List<Department> getDepatments(Long id);
 }

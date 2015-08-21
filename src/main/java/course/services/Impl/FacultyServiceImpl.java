@@ -1,5 +1,6 @@
 package course.services.Impl;
 
+import course.domain.Department;
 import course.domain.Faculty;
 import course.repository.FacultyRepository;
 import course.services.FacultyService;
@@ -25,4 +26,13 @@ public class FacultyServiceImpl implements FacultyService{
         }
         return faculties;
     }
+
+    @Override
+    public List<Department> getDepatments(Long id) {
+
+        return repository.findOne(id).getDepartments();
+    }
+
+
+
 }

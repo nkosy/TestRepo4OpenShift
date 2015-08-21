@@ -1,4 +1,4 @@
-package course.repository;
+package course.service;
 
 import course.App;
 import course.conf.factory.ContactFactory;
@@ -7,12 +7,13 @@ import course.conf.factory.FacultyFactory;
 import course.domain.ContactAddress;
 import course.domain.Department;
 import course.domain.Faculty;
+import course.repository.FacultyRepository;
+import course.services.FacultyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -20,31 +21,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by hashcode on 2015/05/03.
+ * Created by hashcode on 2015/05/12.
  */
 @SpringApplicationConfiguration(classes= App.class)
 @WebAppConfiguration
-public class FacultyCrudTest extends AbstractTestNGSpringContextTests{
+public class FacultyServiceTest extends AbstractTestNGSpringContextTests{
+    @Autowired
+    private FacultyService service;
 
     private Long id;
 
-    private List<Department> departments;
-
     @Autowired
     private FacultyRepository repository;
-
+    private List<Department> departments;
     @BeforeMethod
     public void setUp() throws Exception {
-         departments = new ArrayList<Department>();
+        departments = new ArrayList<Department>();
 
     }
-
-    @AfterMethod
-    public void tearDown() throws Exception {
-//        repository.deleteAll();
-
-    }
-
     @Test
     public void create() throws Exception {
 
@@ -63,35 +57,18 @@ public class FacultyCrudTest extends AbstractTestNGSpringContextTests{
         departments.add(arts);
 
         Faculty faculty = FacultyFactory
-                .createFaculty(facultyaddress,departments,"FID");
+                .createFaculty(facultyaddress, departments, "FID");
 
         repository.save(faculty);
         id=faculty.getId();
         Assert.assertNotNull(faculty.getId());
     }
 
-    @Test(dependsOnMethods = "create")
-    public void read() throws Exception {
-        Faculty faculty = repository.findOne(id);
-        Assert.assertNotNull(faculty.getId());
-        Assert.assertEquals("7550", faculty.getAddress().getPostalCode());
-        Assert.assertTrue(faculty.getDepartments().size() == 2);
+
+    @Test
+    public void testGetFacultyDepartmets() throws Exception {
+        List<Department> departments = service.getDepatments(id);
+        Assert.assertTrue(departments.size() == 2);
 
     }
-
-    @Test(dependsOnMethods = "read")
-    public void update() throws Exception {
-
-    }
-
-//    @Test(dependsOnMethods = "update")
-    public void delete() throws Exception {
-        Faculty faculty = repository.findOne(id);
-        repository.delete(faculty);
-        Faculty deletedFaculty = repository.findOne(id);
-        Assert.assertNull(deletedFaculty);
-
-    }
-
-
 }
