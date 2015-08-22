@@ -30,7 +30,7 @@ public class HomePage {
         return couse;
     }
 
-    @RequestMapping(value = "/courses", method = RequestMethod.GET)
+    @RequestMapping(value = "courses", method = RequestMethod.GET)
     public List<Course> getCourses(){
         return service.getCourses();
     }
