@@ -19,6 +19,7 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 /**
  * Created by hashcode on 2015/08/22.
  */
@@ -26,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringApplicationConfiguration(classes = App.class)
 @ContextConfiguration(classes = MockServletContext.class)
 @WebAppConfiguration
-public class HometMockTests {
+public class HometMockTests{
     final String BASE_URL = "http://localhost:8080/";
     private MockMvc mockMvc;
     @Before
@@ -39,12 +40,15 @@ public class HometMockTests {
 
     @Test
     public void read() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders
-                .get(BASE_URL+"api/home")
-                .accept(MediaType.APPLICATION_JSON))
+
+        mockMvc
+                .perform(MockMvcRequestBuilders
+                        .get(BASE_URL + "api/home")
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(
                         is("This is a Home Page")));
-
     }
+
+
 }
