@@ -21,7 +21,6 @@ public class SubjectPage {
     @Autowired
     private SubjectService service;
 
-
     //-------------------Retrieve All Subjects--------------------------------------------------------
 
     @RequestMapping(value = "/subjects/", method = RequestMethod.GET)
@@ -67,7 +66,6 @@ public class SubjectPage {
         headers.setLocation(ucBuilder.path("/subject/{id}").buildAndExpand(subject.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
-
 
     //------------------- Update a Subject --------------------------------------------------------
 
